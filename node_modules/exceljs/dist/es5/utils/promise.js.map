@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../lib/utils/promise.js"],"names":["module","exports","Promise"],"mappings":";;AAAAA,MAAM,CAACC,OAAP,GAAiB;AACfC,EAAAA,OAAO,EAAE,OAAOA,OAAP,KAAmB,WAAnB,GAAiCA,OAAjC,GAA2C;AADrC,CAAjB","sourcesContent":["module.exports = {\n  Promise: typeof Promise !== 'undefined' ? Promise : null,\n};\n"],"file":"promise.js"}

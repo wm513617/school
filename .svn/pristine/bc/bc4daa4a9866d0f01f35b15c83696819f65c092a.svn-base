@@ -1,9 +1,0 @@
-.vscode
-client
-server/logs/
-.svn
-.DS_Store
-export
-.editorconfig
-.eslintignore
-.eslintrc
