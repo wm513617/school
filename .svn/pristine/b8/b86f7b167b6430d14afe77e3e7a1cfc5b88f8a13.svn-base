@@ -1,0 +1,137 @@
+<div class="vehicle flex flex-1"
+  style="flex-direction:column">
+  <div class="layout-content bs-content">
+    <div class="bs-left">
+      <div class="title clearfix theme-title">
+        <label style="font-size:14px;">机构</label>
+        <span class="right">
+          <i class="iconfont icon-refresh"
+            @click="refreshOrg"
+            style="float:right;"></i>
+        </span>
+      </div>
+      <div style="padding: 10px;">
+        <Input v-model="searchVal"
+          icon="ios-search-strong"
+          placeholder="请输入..."></Input>
+      </div>
+      <div class="vtreeBox"
+        style="height: calc(100% - 92px)">
+        <bs-scroll ref="scroller">
+          <VTree :treeData="devList"
+            :searchVal="searchVal"
+            :options="{showOpenPreview: true,showOpenAllPreview: true}"
+            @on-expand="expand"
+            @openPreviewClick="handlePreview"
+            @node-dblclick="handlePreview"
+            @openAllPreviewClick="allPreview"></VTree>
+        </bs-scroll>
+      </div>
+    </div>
+    <div class="bs-main">
+      <div class="video">
+        <div style="flex:1 0;position:relative">
+          <div class="videos capture-video">
+            <video-frame :pluginCount="16"
+              :playingCount.sync="playingCount"
+              :clickInit="false"
+              :defaultShowscreen="4"
+              :slotHeight="slotHeight"
+              :state.sync="state"
+              ref="frame"
+              :bgColor="'rgb(64, 64, 64)'"></video-frame>
+          </div>
+          <VideoButtons ref="videoBtn"
+            :playingCount="playingCount"
+            :style="{'height': btnheight + 'px'}"></VideoButtons>
+        </div>
+        <div class="contrast-current">
+          <div class="title clearfix">
+            <div class="theme-title">
+              <label>比对记录：</label>
+              <Select v-model="selectType"
+                style="width:80px;float:right">
+                <Option v-for="item in selectList.comparisonList"
+                  :value="item.value"
+                  :key="item.value">{{ item.label }}</Option>
+              </Select>
+            </div>
+          </div>
+          <transition-group v-if="contrastList.length > 0"
+            name="contrastList"
+            tag="div"
+            class="contrastList">
+            <ContrastItem v-for="item of contrastList"
+              :key="item"
+              :data="item" />
+          </transition-group>
+          <div class="contrastList"
+            v-if="contrastList.length <= 0">
+            <div class="tips">
+              <span>
+                暂无比对记录
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="video-list">
+        <Tabs :animated="false"
+          size="small">
+          <TabPane label="实时抓拍">
+            <div class="passList">
+              <div class="pic-list">
+                <transition-group name="contrastList"
+                  tag="ul"
+                  class="realtimeList">
+                  <li v-for="item of realtimeList"
+                    :key="item.capture">
+                    <div class="item">
+                      <div class="imageWarp">
+                        <img :src="item.capture"
+                          @error="imgErr" />
+                      </div>
+                      <div class="footer">
+                        <span class="time">{{ $moment(item.captureTime).format('HH:mm:ss') }}</span>
+                        <span class="point"
+                          @title='item.device '>{{ item.device }}</span>
+                      </div>
+                    </div>
+                  </li>
+                </transition-group>
+              </div>
+              <div class="more-btn"
+                @click="goPassHuman">
+                <p>查看更多</p>
+              </div>
+            </div>
+          </TabPane>
+          <TabPane label="人员对比">
+            <div class="passList">
+              <div class="pass-list-table">
+                <bs-scroll ref="scroller"
+                  height="140px">
+                  <Table height="140"
+                    size="small"
+                    :tooltip="true"
+                    :highlight-row="true"
+                    :columns="table.columns.contrastMsgList"
+                    :data="contrastMsgList"
+                    @on-row-click="handleTableDetail"></Table>
+                </bs-scroll>
+              </div>
+              <div class="row-detail">
+                <ContrastItem v-show="tableDetail.flag"
+                  :data="tableDetail.data" />
+              </div>
+              <div class="more-btn"
+                @click="goPassHuman">
+                <p>查看更多</p>
+              </div>
+            </div>
+          </TabPane>
+        </Tabs>
+      </div>
+    </div>
+  </div>
+</div>

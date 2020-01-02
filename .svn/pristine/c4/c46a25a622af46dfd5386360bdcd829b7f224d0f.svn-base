@@ -1,0 +1,32 @@
+.vehicle {
+    .echart-table {
+        border-collapse: collapse;
+        td,
+        th {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    }
+    .car-list {
+        flex: 1;
+        position: relative;
+    }
+    .bs-table-box {
+        // position: absolute;
+        width: 100%;
+    }
+    .ivu-dropdown {
+        position: relative;
+        .ivu-select-dropdown {
+            left: 0px !important;
+        }
+    }
+}
+
+.ivu-table-with-fixed-top {
+    .ivu-table-body {
+        table {
+            width: 100% !important;
+        }
+    }
+}

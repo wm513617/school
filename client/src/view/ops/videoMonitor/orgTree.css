@@ -1,0 +1,15 @@
+.video-monitor-tree .ivu-tabs-bar {
+  margin-bottom: 0;
+}
+.video-monitor-tree .ivu-tabs {
+  height: 100%;
+}
+.video-monitor-tree .ivu-tabs .ivu-tabs-content {
+  height: calc(100% - 42px);
+}
+.video-monitor-tree .ivu-tabs .ivu-tabs-tabpane {
+  height: 100%;
+}
+.video-monitor-tree .video-monitor-tree-wrap {
+  height: calc(100% - 52px);
+}

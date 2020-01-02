@@ -1,0 +1,22 @@
+﻿//用于描述打开回放的操作
+
+package Client2MA;
+
+
+message PlayBackDevReq   //回放的发送的结构体
+{
+	required string devIp      = 1;
+	required int32  devPort    = 2;
+	required int32  channel    = 3;   
+	required int32  sTime      = 4;   
+	required int32  eTime      = 5;   
+	optional int32  streamType = 6;   
+	optional int32  streamConnPort = 7;   
+}
+
+message PlayBackDevRsp
+{
+	required string  TsIp=1;
+	required int32   TsPort=2;
+	required int64 streamId   = 3;
+}

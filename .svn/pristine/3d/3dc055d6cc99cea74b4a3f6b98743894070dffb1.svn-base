@@ -1,0 +1,11 @@
+﻿//用于英泰智智能交通
+
+package MA2DA;
+import "CommandBase.proto";
+
+
+message GetTraDevInfoResp
+{
+	optional bytes traInfo            = 1;//里面放json数据。
+}
+

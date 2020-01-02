@@ -1,0 +1,12 @@
+﻿package Client2MA;
+message StopRecordReq
+{
+	required string devIp=1;
+	required int32  devPort=2;
+	required int32  channel=3;
+	required int32  streamType=4;//主码流 ：1，子码流 ：2
+	required int32  eventType=5;//录像的事件
+	required int32  eventSrc = 6;//事件源信息
+	optional bytes  devName=7;     //设备名称
+	optional int32  devId=8;       //设备ID，如vmr自动生成的通道号
+}

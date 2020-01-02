@@ -1,0 +1,18 @@
+.equipment-right-device .table-relative .ivu-table-body {
+  overflow: auto
+}
+
+.equipment-right-device .table-relative .ivu-table-body>table {
+  width: 100% !important;
+}
+
+
+/* 监控点报警和设备报警 */
+
+#deviceAlarm .ivu-form-item .ivu-form-item-content {
+  width: 145px;
+}
+
+#deviceAlarm .ivu-form-item {
+  margin-left: 20px
+}

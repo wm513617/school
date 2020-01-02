@@ -1,0 +1,94 @@
+<div class="bs-main main-page-bg">
+  <CarDetail ref="carDetail"
+    :show.sync="detailModal"
+    :value="carDetail"></CarDetail>
+  <div class="car-handle">
+    <div>
+      <Dropdown trigger="click"
+        @on-click="changeMamageType">
+        <Button type="ghost"
+          :disabled="!isEnable">
+          移动到
+          <Icon type="arrow-down-b"></Icon>
+        </Button>
+        <Dropdown-menu slot="list">
+          <Dropdown-item :disabled="showItem=='1'"
+            name="1">布控车辆</Dropdown-item>
+          <Dropdown-item :disabled="showItem=='3'"
+            name="3">黑名单</Dropdown-item>
+          <Dropdown-item :disabled="showItem=='2'"
+            name="2">白名单</Dropdown-item>
+        </Dropdown-menu>
+      </Dropdown>
+    </div>
+    <div class="search-box">
+      <div class="date-box">
+        <Date-picker :value="startTime"
+          type="date"
+          @on-change="changeStartTime"
+          :options="dateLimit"
+          :clearable="false"
+          :editable="false"
+          placeholder='开始日期'></Date-picker>
+        <span>至</span>
+        <Date-picker :value="endTime"
+          @on-change="changeEndTime"
+          :options="dateLimit"
+          :clearable="false"
+          :editable="false"
+          type='date'
+          placeholder='结束日期'></Date-picker>
+      </div>
+      <Input @on-enter="searchCar"
+        v-model="searchText"
+        placeholder="请输入车牌号..."
+        style="width: 250px;margin-right:10px">
+      </Input>
+      <Select style="width:250px;"
+        placeholder="点击选择布控范围"
+        ref="scopeSelect">
+        <VTree ref='analyzeVTree'
+          :treeData="treeData"
+          :options="options"
+          style="margin-left: 20px;"></VTree>
+      </Select>
+      <Button type="ghost"
+        @click="searchCar"><i class="ivu-icon ivu-icon-ios-search"></i>&nbsp;搜索</Button>
+      <!-- <Button @click="modalShow" icon="search" type="ghost">详细查询</Button> -->
+    </div>
+
+  </div>
+  <div class="car-list flex-1"
+    ref="tableBox">
+    <div class="table-box">
+      <Table :row-class-name="rowClassName"
+        :height="tableHeight"
+        size="small"
+        :data="carList"
+        @on-row-click="rowClick"
+        @on-selection-change="carSelect"
+        :columns="tableColumns"
+        :highlight-row="true"></Table>
+      <div class="table-footer">
+        <div style="float: right;">
+          <Page show-sizer
+            :page-size-opts="$PageInfo.size"
+            @on-page-size-change="pageSizeChange"
+            :page-size="pageInfo.limit"
+            :show-total="true"
+            :show-elevator="true"
+            :total="pageInfo.count"
+            :current="pageInfo.cur"
+            @on-change="changePage"></Page>
+        </div>
+      </div>
+    </div>
+    <div v-if="showItem==='违章查询'">
+      敬请期待
+    </div>
+
+    <div v-if="showItem==='套牌查询'">
+      敬请期待
+    </div>
+  </div>
+</div>

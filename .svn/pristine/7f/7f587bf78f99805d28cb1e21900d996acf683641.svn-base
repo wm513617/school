@@ -1,0 +1,58 @@
+﻿package MA2DA;
+import "CommandBase.proto";
+// [GetRequest && SetResponse]形式的message不带"Prm", [GetResponse && SetRequest]形式的message需要带"Prm"
+// 变量格式为 "*Enum" 表示枚举
+// 变量格式为 "*Arr"  表示为数组
+
+// 报警输入 [读取/设置]
+
+// Get Request && Set Response
+message AlertAlarmInputCfg
+{
+	message inputNoCfg
+	{
+		required int32 inputNo = 1; // 端子号,1,2,3,...
+		optional int32 result  = 2; // only for set response
+	}
+	repeated inputNoCfg inputNoCfgArr = 1;
+}
+
+// Get Response && Set Request 
+message AlertAlarmInputCfgPrm
+{
+	enum zoneType{
+		Hours24 = 1; // 24小时防区
+		Instant = 2; // 即时防区
+		Delay   = 3; // 延时防区
+		Bypass  = 4; // 旁路
+		Unknown = 5;
+	}
+
+	message inputNoCfgPrm
+	{
+		required int32    inputNo                       = 1;
+		optional int32    deployment                    = 2; // 布防(1->"yes")|撤防(0->"no")
+		optional string   name                          = 3; // 端子名称
+		optional int32    status                        = 4; // 端子状态 常开(1->alwaysOpen), 常闭(0->alwaysClose)
+		optional zoneType zoneTypeEnum                  = 5; // 防区类型 
+		optional int32    delayTime                     = 6; // 单位秒
+
+		message deploymentTimePrm
+		{
+			optional int32 dayofWeek      = 1; // 0->sun, 1->mon, ... 6->sat
+
+			message slicePrm
+			{
+				required int32 sliceofDay  = 1; // [0-5] index of arrary
+				optional int32 startHour   = 2; // [0-23]
+				optional int32 startMinute = 3; // [0-59]
+				optional int32 endHour     = 4; // [0-23]
+				optional int32 endMinute   = 5; // [0-59]
+			}
+			repeated slicePrm slicePrmArr = 2; // [0-5] slice details 
+		}
+		repeated deploymentTimePrm deploymentTimePrmArr = 7; // [0-6]
+	}
+	repeated inputNoCfgPrm inputNoCfgPrmArr = 1;
+}
+

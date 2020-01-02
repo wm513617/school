@@ -1,0 +1,54 @@
+.audioForm .ivu-select-dropdown {
+  max-height: 116px !important;
+}
+.confirm-way .ivu-input-number-disabled .ivu-input-number-input {
+  background-color: #777 !important;
+}
+.confirm-way .ivu-input-number-handler-wrap {
+  display: none !important;
+}
+.jibie-table .ivu-table .ivu-table-body {
+  display: inline-table !important;
+}
+.tabStyle .ivu-tabs-no-animation > .ivu-tabs-content {
+  height: calc(100% - 56px);
+}
+.tabStyle .ivu-tabs-bar {
+  margin-bottom: 12px;
+}
+.feature-btn {
+  width: 100%;
+  flex: 0 0 32px;
+  padding: 0 24px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.feature-btn > button,
+.feature-btn .import,
+.feature-btn .import button {
+  margin-right: 8px;
+  float: left;
+  width: 100px;
+  height: 32px;
+}
+.lf {
+  float: left;
+}
+
+.rt {
+  float: right;
+}
+.tab-content-alarm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1c3053;
+  height: 100%;
+}
+.table-box .ivu-btn-success {
+  background: #19be6b !important;
+}
+.table-box .ivu-btn-success:hover {
+  background: #4699f9 !important;
+}

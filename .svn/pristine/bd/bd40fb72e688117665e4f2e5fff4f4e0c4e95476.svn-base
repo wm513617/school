@@ -1,0 +1,35 @@
+.query-style {
+  float: right
+}
+
+.manage-head {
+  /* height: 50px */
+  padding: 0 0 12px 10px;
+}
+
+.select-style {
+  margin: 0 10px
+}
+
+.show-box .ivu-tabs {
+  /*background: #1f2224*/
+}
+
+.ivu-menu-item-group .ivu-menu-item-group-title {
+  color: #fff !important
+}
+
+.store .ivu-select-item-disabled:hover {
+  background-color: #5d5d5d;
+}
+
+#holiday .table-content {
+  position: relative;
+  height: 433px;
+}
+
+#holiday .table-content .table-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}

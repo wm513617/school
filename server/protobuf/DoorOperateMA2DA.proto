@@ -1,0 +1,8 @@
+package MA2DA;
+import "CommandBase.proto";
+
+message DoorOperateReq
+{
+	required int32  devId             = 1; // start from 1
+	required int32  doorType          = 2; 
+}

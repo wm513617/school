@@ -1,0 +1,19 @@
+package MA2DA;
+import "CommandBase.proto";
+
+
+message GetDoorDevInfoResp
+{
+	repeated DoorDevInfo doorInfo = 1;
+}
+
+message DoorDevInfo
+{
+	required int32  devId             = 1; // start from 1
+	required string  devName          = 2;
+	required string  devIp            = 3;
+	required int32  devType           = 4;
+	optional string username 		  = 5;
+	optional string password 		  = 6;
+	optional int32 devPort 			  = 7;
+}

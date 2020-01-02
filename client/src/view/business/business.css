@@ -1,0 +1,18 @@
+.businessTimelineStyle .ivu-timeline-item .ivu-timeline-item-tail {
+  border-left: 1px solid #666;
+  opacity: 0.7;
+}
+
+.businessTimelineStyle .ivu-timeline-item .ivu-timeline-item-head-blue {
+  /* background: #4699f9; */
+  border: 2px solid #4699f9;
+}
+
+.businessTimelineStyle .ivu-timeline-item .ivu-timeline-item-content .timespan {
+  word-break: normal;
+  width: auto;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}

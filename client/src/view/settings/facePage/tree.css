@@ -1,0 +1,7 @@
+.box-tree {
+  height: calc(100% - 70px) !important
+}
+.table-cover .ivu-table-cell {
+  padding-left: 24px !important;
+  padding-right: 5px !important;
+}

@@ -1,0 +1,3 @@
+.bs-disabled {
+  pointer-events: none;
+}

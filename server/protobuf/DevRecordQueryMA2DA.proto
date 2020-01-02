@@ -1,0 +1,36 @@
+//用于执行ma到设备的录像查询及结果
+
+package MA2DA;
+
+import "CommandBase.proto";
+
+message QueryDevRecordReq //查询发送的结构体
+{
+	required int32  channel 	= 1;		//请求查询设备通道号
+	required int32  recordType 	= 2;		//请求查询录像类型 0:所有 定时:1  移动侦测:2，标记：3，车辆：4，人脸：5
+	required int32  sTime		= 3;		//录像开始时间
+	required int32  eTime		= 4;		//录像结束时间
+	required int32  streamType  = 5;		//码流类型
+	required string  diskNum    = 6;		//码流类型
+    required int32  rowId       = 7;
+    required int32  rowCount    = 8;
+}
+
+message DevRecordInfo
+{
+	required int32  channel 	= 1;		//请求查询设备通道号
+	required string fileName 	= 2;		//请求查询录像类型
+	required int32  sTime		= 3;		//录像开始时间
+	required int32  eTime		= 4;		//录像结束时间
+	required int32  filesize    = 5;		//录像开始时间
+	required int32  streamType  = 6;		//码流类型
+	required int32  recordType 	= 7;		//请求查询录像类型 定时  移动侦测等
+}
+
+message QueryDevRecordResp //查询结果
+{
+    required int32  rowId             = 1;
+	required int32  rowCount          = 2;
+	required int32  total             = 3;
+	repeated DevRecordInfo recordInfo  =4;
+}

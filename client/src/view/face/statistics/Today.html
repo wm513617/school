@@ -1,0 +1,137 @@
+<div class="content">
+  <Row>
+    <Col span="24">
+    <div class="realtime-data">
+      <div class="realtime-tittle">
+        <span class="title-font">实时数据</span>
+        <span class="time-font">{{ newDate }}</span>
+      </div>
+      <Row v-show="sysTabActive === 'capture'"
+        :gutter="36"
+        class="realtime-content">
+        <Col span="6">
+        <div class="realtime-card1">
+          <div class="iconfont icon-comparison1 section-icon"></div>
+          <div class="card-number">{{ realTimeData.comparison }}</div>
+          <div class="card-name">比对识别总数</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/face/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+        <Col span="6">
+        <div class="realtime-card2">
+          <div class="iconfont icon-blacklist section-icon"></div>
+          <div class="card-number">{{ realTimeData.black }}</div>
+          <div class="card-name">黑名单识别数量</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/face/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+        <Col span="6">
+        <div class="realtime-card3">
+          <div class="iconfont icon-whitelist section-icon"></div>
+          <div class="card-number">{{ realTimeData.white }}</div>
+          <div class="card-name">白名单识别数量</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/face/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+        <Col span="6">
+        <div class="realtime-card4">
+          <div class="iconfont icon-dispatched section-icon"></div>
+          <div class="card-number">{{ realTimeData.dispatched }}</div>
+          <div class="card-name">布控识别数量</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/face/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+      </Row>
+      <Row v-show="sysTabActive === 'current'"
+        :gutter="36"
+        class="realtime-content">
+        <Col span="6">
+        <div class="realtime-card1">
+          <div class="iconfont icon-yuangong section-icon"></div>
+          <div class="card-number">{{ realTimeData.subject }}</div>
+          <div class="card-name">员工识别数量</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/pass/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+        <Col span="6">
+        <div class="realtime-card2">
+          <div class="iconfont icon-fangke section-icon"></div>
+          <div class="card-number">{{ realTimeData.vistor }}</div>
+          <div class="card-name">访客识别数量</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/pass/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+        <Col span="6">
+        <div class="realtime-card3">
+          <div class="iconfont icon-stranger section-icon"></div>
+          <div class="card-number">{{ realTimeData.stranger }}</div>
+          <div class="card-name">陌生人识别数量</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/pass/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+        <Col span="6">
+        <div class="realtime-card5">
+          <div class="iconfont icon-vip section-icon"></div>
+          <div class="card-number">{{ realTimeData.vip }}</div>
+          <div class="card-name">VIP识别数量</div>
+          <div class="card-change"></div>
+          <div class="more">
+            <a @click="$router.replace('/pass/search/compare')">查看更多</a>
+          </div>
+        </div>
+        </Col>
+      </Row>
+    </div>
+    <div class="cartogram">
+      <ul class="tabHeader clearfix">
+        <span class="title-font"
+          style="float:left;margin-right:100px;">区间分布</span>
+        <li v-show="sysTabActive === 'capture'"
+          v-for="item of secTabListCap"
+          :class="{'active': secTabActiveCap === item.value}"
+          @click="secTabActiveCap = item.value">{{item.label}}</li>
+        <li v-show="sysTabActive === 'current'"
+          v-for="item of secTabListCur"
+          :class="{'active': secTabActiveCur === item.value}"
+          @click="secTabActiveCur = item.value">{{item.label}}</li>
+      </ul>
+      <div class="clearfix"
+        style="margin: 16px;">
+        <div style="float:right;">
+          对比:
+          <Date-picker :options="{disabledDate (date) {return date && date.valueOf() > Date.now()  - 86400000}}"
+            v-model="contrastDate"
+            @on-open-change="handleDate"
+            type="date"
+            placeholder="对比日期"
+            :clearable="false"
+            style="width: 218px;display:inline-block;"></Date-picker>
+        </div>
+      </div>
+      <BSechart style="width:100%; height:387px;"
+        :options="chartOption"></BSechart>
+    </div>
+    </Col>
+  </Row>
+</div>

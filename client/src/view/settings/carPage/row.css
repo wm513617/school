@@ -1,0 +1,26 @@
+.tenRow .ivu-table .ivu-table-body {
+  height: 400px !important;
+}
+.tenRowOne .ivu-table .ivu-table-body {
+  /*  */
+  height: 739px !important;
+}
+.fiveRow .ivu-table .ivu-table-body {
+  height: 200px !important;
+}
+
+.serverTenRow .ivu-table .ivu-table-body {
+  height: 400px !important;
+}
+
+.ivu-table .ivu-table-body > table {
+  width: 100% !important;
+}
+
+.ivu-menu-item-group .ivu-menu-item-group-title {
+  color: #fff !important;
+}
+
+.resource-management .ivu-table-cell {
+  padding-left: 24px;
+}

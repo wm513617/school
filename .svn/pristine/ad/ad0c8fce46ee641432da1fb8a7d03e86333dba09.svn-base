@@ -1,0 +1,120 @@
+<div v-if="modal"
+  @click.stop>
+  <Modal class="verifaceUserDetail"
+    title="车辆详情"
+    :mask-closable="false"
+    v-model="modal"
+    :width="800"
+    @on-cancel="cancel">
+    <div class="car-detail-body">
+      <div class="car-detail-content">
+        <Tabs :value="item"
+          @on-click="showItem">
+          <Tab-pane label="过车信息"
+            name="过车信息"></Tab-pane>
+          <Tab-pane label="过车录像"
+            name="过车录像"></Tab-pane>
+          <Tab-pane v-if="hasLicence"
+            label="行车轨迹"
+            name="行车轨迹"></Tab-pane>
+          <!--<Tab-pane :disabled="!deployState" label="布控信息" name="布控信息"></Tab-pane>-->
+        </Tabs>
+        <div class="detail-info"
+          v-if="item==='过车信息'">
+          <div class="car-pass">
+            <div class="car-img">
+              <span v-if="deployState"
+                class="deploy_Icon">布控</span>
+              <img v-if="car.image"
+                :src="'/api/upload?id='+car.image"
+                :alt="car.image">
+              <img v-else
+                :src="img">
+            </div>
+            <div class="content"
+              style="padding:0 20px">
+              <div class="section"
+                style="width:100%">
+                <div class="count">
+                  <span class="dif fs-28">{{car.licence}}</span>
+                </div>
+                <div class="title">车牌号</div>
+              </div>
+              <div class="section split">
+                <div class="count">
+                  <span class="fs-14">{{car.brand}} {{car.model}}</span>
+                </div>
+                <div class="title">车辆品牌</div>
+              </div>
+              <div class="section">
+                <div class="count">
+                  <span class="fs-14">{{$moment.unix(Number(car.timeStamp)).format('YYYY-MM-DD HH:mm:ss')}}</span>
+                </div>
+                <div class="title">抓拍时间</div>
+              </div>
+              <div class="section  split">
+                <div class="count">
+                  <span class="fs-14">{{car.colorName}}</span>
+                </div>
+                <div class="title">车辆颜色</div>
+              </div>
+              <div class="section">
+                <div class="count">
+                  <span class="fs-14">{{car.resourceName}}</span>
+                </div>
+                <div class="title">抓拍设备</div>
+              </div>
+              <div class="section split">
+                <div class="count">
+                  <span class="fs-14">{{car.vehicleList}}</span>
+                </div>
+                <div class="title">车辆类型</div>
+              </div>
+              <div class="section">
+                <div class="count">
+                  <span class="fs-14">{{car.direction}}</span>
+                </div>
+                <div class="title">车行方向</div>
+              </div>
+              <div class="section"
+                v-if="deployState"
+                style="width:100%">
+                <div class="count">
+                  <span class="fs-14">{{defenseInfo.name}}</span>
+                </div>
+                <div class="title">布控原因</div>
+              </div>
+              <div class="section"
+                v-if="deployState"
+                style="width:100%">
+                <div class="count">
+                  <span class="fs-14">{{$moment.unix(Number(defenseInfo.startTime)).format('YYYY-MM-DD')}}---{{$moment.unix(Number(defenseInfo.endTime)).format('YYYY-MM-DD')}}</span>
+                </div>
+                <div class="title">布控时间</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-info"
+          v-show="item==='过车录像'">
+          <div style="flex:1;padding:0px 10px;">
+            <PlayBack :videoParam="videoParam"
+              :show="videoShow"
+              ref="playbackcom"></PlayBack>
+          </div>
+        </div>
+        <div class="detail-info"
+          v-if="item==='行车轨迹'">
+          <div style="flex:1;text-align:center">
+            <BSMap></BSMap>
+            <!-- <img height="100%" width="100%" src="/static/car/vehicleMap2.jpg" alt="行车轨迹"> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div slot="footer">
+      <Button @click="cancel"
+        type="primary">关闭</Button>
+    </div>
+  </Modal>
+</div>

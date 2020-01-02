@@ -1,0 +1,41 @@
+<div id="duty-shift">
+  <div ref="mainContent"
+    class="main-content">
+    <div class="toolbar">
+      <div class="left-bar">
+        <Input class="iview-input"
+          v-model="searchName"
+          placeholder="请输入用户名"
+          style="width: 200px">
+        </Input>
+        <DatePicker class="iview-input"
+          type="daterange"
+          confirm
+          v-model="dateRange"
+          placeholder="请选择时间"
+          @on-change="getDateRange"
+          style="width: 200px"></DatePicker>
+        <Button @click="confirmSearch">检索</Button>
+      </div>
+    </div>
+    <div class="table-container"
+      ref="tableContainer">
+      <Table v-if="tableWidth && tableHeight"
+        :columns="columns"
+        :width="tableWidth"
+        :height="tableHeight"
+        :data="data"></Table>
+    </div>
+    <div class="paging-container">
+      <Page :total="page.total"
+        :page-size="page.pageSize"
+        :current="page.current"
+        :page-size-opts="$PageInfo.size"
+        @on-page-size-change="handlePageSizeChange"
+        @on-change="handlePageChange"
+        show-total
+        show-sizer
+        show-elevator></Page>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.ivu-tree-title {
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+}
+
+/* .ivu-tree ul li {
+  margin: 4px 0;
+} */
+
+.ivu-tree ul li {
+  line-height: normal !important;
+}
+/* .ivu-tree-arrow .ivu-icon .ivu-icon-arrow-right-b {
+    margin-top: -3px !important;
+} */
+
+.ivu-tree-title:hover {
+  background-color: #2a436a;
+}
+
+.ivu-tree-title-selected,
+.ivu-tree-title-selected:hover {
+  height: 24px;
+  line-height: 24px;
+  background-color: #2a436a;
+}

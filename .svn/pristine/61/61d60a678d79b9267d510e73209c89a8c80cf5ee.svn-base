@@ -1,0 +1,7 @@
+.access-control-system .ivu-table-wrapper {
+  margin-top: 16px !important;
+}
+
+.access-control-system .ivu-table-small td {
+  height: 38px;
+}

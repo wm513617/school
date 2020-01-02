@@ -1,0 +1,38 @@
+package Client2MA;
+
+
+//录像信息
+message RecordingStreamInfo
+{
+	required string devIp=1;
+	required int32  devPort=2;
+	required int32  channel=3;
+	required int32  streamType=4;
+}
+
+//请求某个存储服务器录像信息，command号为0x00002336
+message RecordInfoReq
+{
+	required string dsServerId=1;
+}
+
+message RecordInfoRes
+{
+	repeated RecordingStreamInfo streamInfo=1;
+}
+
+//请求所有录像信息，command号为0x00002335
+message AllRecordInfoReq
+{
+	//不需要body，只需bscp头即可。
+}
+
+message AllRecordInfoRes
+{
+	message ServerInfo
+	{
+		required string dsServerId=1;
+		repeated RecordingStreamInfo  streamInfo=2;
+	}
+	repeated ServerInfo serverInfo=1;
+}

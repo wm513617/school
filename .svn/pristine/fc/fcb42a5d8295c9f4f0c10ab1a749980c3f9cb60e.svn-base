@@ -1,0 +1,217 @@
+<div class="content dispatch-task-content"
+  ref="faceTableBox">
+  <div class="operate-button">
+    <Button v-if="$BShasPower('BS-FACE-DISPATCH-MANAGE')"
+      type="ghost"
+      icon="plus"
+      @click="handleAddTask">添加</Button>
+    <Button v-if="$BShasPower('BS-FACE-DISPATCH-MANAGE')"
+      type="ghost"
+      icon="trash-a"
+      :disabled="selectedId.length === 0"
+      :class="{'disabled': selectedId.length === 0}"
+      @click="createResDelModel">删除</Button>
+    <Button v-if="$BShasPower('BS-FACE-DISPATCH-MANAGE')"
+      type="ghost"
+      :disabled="selectedId.length === 0"
+      :class="{'disabled': selectedId.length === 0}"
+      @click="restartBatch"><i class="ivu-icon iconfont icon-shebei_bufang" style="font-size:14px;"></i>&nbsp;重新布控</Button>
+    <Button v-if="$BShasPower('BS-FACE-DISPATCH-MANAGE')"
+      type="ghost"
+      :disabled="selectedId.length === 0"
+      :class="{'disabled': selectedId.length === 0}"
+      @click="handleEnd"><i class="ivu-icon iconfont icon-zongchefang" style="font-size:14px;"></i>&nbsp;停止布控</Button>
+    <div style="float: right;">
+      <Input v-model="searchData.name"
+        placeholder="请输入姓名"
+        style="width:240px; margin-right: 8px;"></Input>
+      布控状态：
+      <Select placeholder="全部"
+        style="width:240px; margin-right: 10px;"
+        v-model="searchData.state">
+        <Option v-for="item in searchState"
+          :value="item.value"
+          :key="item.value">{{ item.label }}</Option>
+      </Select>
+      <Button type="ghost" icon="ios-search" style="margin-left:0px;"
+        @click="search">检索</Button>
+    </div>
+  </div>
+  <div style="flex:1;position:relative;display:flex">
+    <Col span="20">
+    <Table :height="tableHeight"
+      size="small"
+      :row-class-name="rowClassName"
+      highlight-row
+      @on-row-click="handleRowClick"
+      :columns="columns"
+      :data="dispatchedList"
+      @on-selection-change="selectionChange"></Table>
+    <div class="table-footer">
+      <Page show-sizer
+        :page-size-opts="$PageInfo.size"
+        @on-page-size-change="pageSizeChange"
+        style="float:right"
+        :current="pageCur"
+        :page-size="pageLimit"
+        show-total
+        :total="pageTotal"
+        show-elevator
+        @on-change="handlePageChange"></Page>
+    </div>
+    </Col>
+    <Col span="4"
+      style="padding-left: 10px;">
+    <div class="snapshot-type">入库照片</div>
+    <Col span="24"
+      style="height: 190px; background: #1C3053;">
+    <div class="snapshot-photo"
+      v-show="showTaskInfo">
+      <img :src="nowPicture"
+        class="photo-table">
+    </div>
+    </Col>
+    </Col>
+  </div>
+  <Modal v-model="addModal"
+    :mask-closable="false"
+    :width="800"
+    :title="!isModify?'任务添加':'任务修改'"
+    @on-ok="ok('formItem')"
+    @on-cancel="cancel('formItem')">
+
+    <Tabs type="card"
+      :value="addTask.item"
+      @on-click="showItem">
+      <Tab-pane label="基础信息"
+        name="基础信息"></Tab-pane>
+      <Tab-pane label="布控点位"
+        name="布控点位"></Tab-pane>
+    </Tabs>
+    <div v-show="addTask.step === 1"
+      style="height: 500px; padding: 0 10px;">
+      <div class="modal-top-picture clearfix">
+        <div class="getImage">
+          <img v-if="formItem.photoUrl"
+            :src="formItem.photoUrl" />
+        </div>
+        <Button type="ghost"
+          icon="ios-cloud-upload-outline"
+          @click="divGetImage"
+          style="margin: 20px 0 0 80px;">上传照片</Button>
+        <input style="display: none;"
+          type="file"
+          ref="getImage"
+          @click="getImage">
+      </div>
+      <div class="modal-middle-content">
+        <Form ref="formItem"
+          :model="formItem"
+          label-position="left"
+          :rules="ruleInline"
+          :label-width="100">
+          <Form-item label="人员姓名"
+            prop="username">
+            <Input v-model="formItem.username"
+              style="height: 32px; width: 100%;"></Input>
+          </Form-item>
+          <Form-item label="性别"
+            prop="gender">
+            <Select v-model="formItem.gender"
+              placeholder="请选择">
+              <Option value="0">男</Option>
+              <Option value="1">女</Option>
+            </Select>
+          </Form-item>
+          <Form-item label="年龄"
+            prop="age">
+            <Input v-model="formItem.age"
+              style="height: 32px; width: 100%;"></Input>
+          </Form-item>
+          <Form-item label="身份证号"
+            prop="idNumber">
+            <Input v-model="formItem.idNumber"
+              style="height: 32px; width: 100%;"></Input>
+          </Form-item>
+          <Form-item label="布控原因"
+            prop="reason">
+            <Input v-model="formItem.reason"
+              style="height: 32px; width: 100%;"></Input>
+          </Form-item>
+          <Form-item label="相似度"
+            prop="similarity">
+            <Select v-model="formItem.similarity"
+              placeholder="请选择">
+              <Option v-for="i in 21"
+                :key="i"
+                :value="(i - 1) * 5">{{(i - 1) * 5 + '%'}}</Option>
+            </Select>
+          </Form-item>
+          <Form-item label="开始时间"
+            prop="startTime">
+            <Date-picker type="date"
+              v-model="formItem.startTime"
+              :clearable="false"
+              placeholder="选择日期"
+              :options="{ disabledDate(date) { return (date && formItem.endTime) && date.valueOf() >= formItem.endTime } }"></Date-picker>
+          </Form-item>
+          <Form-item label="结束时间"
+            prop="endTime">
+            <Date-picker type="date"
+              v-model="formItem.endTime"
+              :clearable="false"
+              placeholder="选择日期"
+              :options="{ disabledDate(date) { return date && date.valueOf() <= formItem.startTime || date.valueOf() <= nowTime } }"></Date-picker>
+          </Form-item>
+          <Form-item label="备注"
+            prop="remark">
+            <Input v-model="formItem.remark"
+              style="height: 32px; width: 100%;"></Input>
+          </Form-item>
+        </Form>
+      </div>
+    </div>
+    <div v-if="addTask.step === 2 && addModal === true"
+      style="height: 500px; overflow-y:auto;">
+      <VTree ref='vtree'
+        :treeData="editPoint"
+        :options="{showInput: true}"></VTree>
+    </div>
+
+    <div slot="footer">
+      <Button type="ghost"
+        @click="cancel('formItem')">取消</Button>
+      <Button type="primary"
+        @click="ok('formItem')"
+        :loading="sureLoading">{{addTask.okBtnText}}</Button>
+    </div>
+  </Modal>
+  <div v-if="restart">
+    <Modal title="重新布控"
+      v-model="restart"
+      :mask-closable="false"
+      :width="500">
+      <div style="height:70px">
+        <Date-picker type="date"
+          v-model="startTime"
+          :clearable="false"
+          placeholder="选择日期"
+          :options="{ disabledDate(date) { return (date && endTime) && date.valueOf() >= endTime } }"></Date-picker>
+        <span style="margin: 0 6px;">至</span>
+        <Date-picker type="date"
+          v-model="endTime"
+          :clearable="false"
+          placeholder="选择日期"
+          :options="{ disabledDate(date) { return date && date.valueOf() <= startTime || date.valueOf() <= nowTime } }"></Date-picker>
+      </div>
+      <Button type="ghost"
+        slot="footer"
+        @click="restartCancel">取消</Button>
+      <Button type="primary"
+        slot="footer"
+        @click="restartSubmit">确定</Button>
+    </Modal>
+  </div>
+  <div class="mask"
+    v-if="mask"></div>
+</div>

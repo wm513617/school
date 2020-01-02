@@ -1,0 +1,18 @@
+package MA2DA;
+
+// [GetRequest && SetResponse]形式的message不带"Prm", [GetResponse && SetRequest]形式的message需要带"Prm"
+// 变量格式为 "*Enum" 表示枚举
+// 变量格式为 "*Arr"  表示为数组
+
+// 设备时间 [读取/设置]
+
+// Get Request && Set Response 
+// NULL
+
+// Get Response && Set Request 
+message SysDevTimeCfgPrm
+{
+	required string time = 1; // "04Y-02M-02D 02h:02m:02s", 比如"2018-08-10 13:35:39"
+}
+
+

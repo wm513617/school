@@ -1,0 +1,12 @@
+.serverConfig .table-position .ivu-table-header table {
+  width: 100% !important;
+  margin-top: 20px;
+}
+
+.serverConfig .ivu-table-wrapper {
+  margin-top: 16px !important;
+}
+
+.serverConfig .ivu-table-cell {
+  padding-left: 24px;
+}

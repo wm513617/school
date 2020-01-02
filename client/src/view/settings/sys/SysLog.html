@@ -1,0 +1,41 @@
+<div id="sys-log">
+    <div ref="mainContent" class="main-content">
+        <div class="toolbar">
+            <div class="left-bar">
+                <DatePicker class="iview-input" type="daterange" confirm v-model="dateRange" placeholder="请选择时间" @on-change="getDateRange" style="width: 200px">
+                </DatePicker>
+                <Input class="iview-input" v-model="searchName" placeholder="用户名" style="width: 200px">
+                </Input>
+                <Select v-model="logType" style="width:100px" placeholder="日志类别">
+                  <Option v-for="item in [{value: '1', label: '操作日志'},{value: '2', label: '管理日志'}]"
+                    :value="item.label"
+                    :key="item.value">{{ item.label }}</Option>
+                </Select>
+                <Select v-model="status" style="width:100px" placeholder="状态">
+                  <Option v-for="item in [{value: '1', label: '成功'},{value: '2', label: '失败'}]"
+                    :value="item.label"
+                    :key="item.value">{{ item.label }}</Option>
+                </Select>
+                <Input class="iview-input" v-model="object" placeholder="操作对象" style="width: 200px">
+                </Input>
+                <Input class="iview-input" v-model="action" placeholder="操作内容" style="width: 200px">
+                </Input>
+                <Button @click="confirmSearch">
+                  <i class="ivu-icon iconfont icon-details" style="font-size:14px;"></i>&nbsp;检索
+                </Button>
+                <Button @click="exportList">
+                  <i class="ivu-icon iconfont icon-export" style="font-size:14px;"></i>&nbsp;导出
+                </Button>
+                <Button @click="clearSearch">
+                  <i class="ivu-icon iconfont icon-refresh" style="font-size:14px;"></i>&nbsp;清空条件
+                </Button>
+            </div>
+        </div>
+        <div class="table-container" ref="tableContainer">
+            <Table v-if="tableWidth && tableHeight" :columns="columns" :width="tableWidth" :height="tableHeight" :data="data"></Table>
+        </div>
+        <div class="paging-container">
+            <Page :total="page.total" :page-size="page.pageSize" :current="page.current" :page-size-opts="$PageInfo.size" @on-page-size-change="handlePageSizeChange" @on-change="handlePageChange" show-total show-sizer show-elevator></Page>
+        </div>
+    </div>
+</div>

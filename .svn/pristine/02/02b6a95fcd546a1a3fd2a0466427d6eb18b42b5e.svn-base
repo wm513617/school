@@ -1,0 +1,252 @@
+<div id="duty-plan">
+  <div ref="mainContent"
+    class="main-content">
+    <div class="toolbar">
+      <div class="left-bar">
+        <Button icon="plus"
+          @click="addPlan">自动创建</Button>
+        <Button icon="plus"
+          @click="recordAddPlan">手动创建</Button>
+        <Button icon="trash-a"
+          :disabled="!selectedPlan"
+          @click="modifyPlan">修改</Button>
+        <Button icon="trash-a"
+          :disabled="!selectedPlan"
+          @click="removePlan">删除</Button>
+        <!-- TODO 刷新的时候加 loding -->
+        <Button icon="refresh"
+          @click="refreshList">刷新</Button>
+      </div>
+      <div class="right-bar">
+        <Input v-model="searchData"
+          placeholder="请输入排班表名称"
+          @on-click="confirmSearch"
+          @on-enter="confirmSearch"
+          icon="search"></Input>
+      </div>
+    </div>
+    <div class="table-container"
+      ref="tableContainer">
+      <Table v-if="tableWidth && tableHeight"
+        :columns="columns"
+        :width='tableWidth'
+        :height='tableHeight'
+        :data="data"
+        @on-selection-change="handleTableSelectionChange"></Table>
+    </div>
+    <div class="paging-container">
+      <Page :total="page.total"
+        :page-size="page.pageSize"
+        :current="page.current"
+        :page-size-opts="$PageInfo.size"
+        @on-page-size-change="handlePageSizeChange"
+        @on-change="handlePageChange"
+        show-total
+        show-sizer
+        show-elevator></Page>
+    </div>
+  </div>
+  <!-- 自动创建任务 -->
+  <Modal v-model="modalVisibleAddPlan"
+    :mask-closable="false"
+    title="创建值班计划"
+    class="modal-add-plan"
+    @on-cancel="closeAddPlan">
+    <Form ref="newPlan"
+      label-position="left"
+      :label-width="90"
+      :model="newPlan"
+      :rules="newPlanRules">
+      <FormItem label="值班表名称"
+        prop="name">
+        <Input v-model="newPlan.name"
+          placeholder="请输入计划名称"></Input>
+      </FormItem>
+      <FormItem label="值班时间"
+        prop="startTime">
+        <RadioGroup v-model="newPlan.animal">
+          <Radio label="1">按月排班</Radio>
+          <Radio label="2">按周排班</Radio>
+          <Radio label="3">按具体时间排班</Radio>
+        </RadioGroup>
+        <div v-if="newPlan.animal === '3'">
+          <DatePicker type="date"
+            v-model="newPlan.startTime"
+            placeholder="开始时间"></DatePicker>
+          <DatePicker type="date"
+            placeholder="结束时间"
+            v-model="newPlan.endTime"></DatePicker>
+        </div>
+      </FormItem>
+      <FormItem label="排班模板"
+        prop="template">
+        <Select v-model="newPlan.template"
+          class="template-select">
+          <Option v-for="item in templateList"
+            :value="item.id"
+            :key="item.id">{{ item.name }}</Option>
+        </Select>
+      </FormItem>
+      <FormItem label="值班人员"
+        prop="team">
+        <dutyTree :doorData='teamList'
+          @addData='addOrder'
+          @reduceData='removeOrder'></dutyTree>
+        <!-- <Tree :data="teamList"
+          ref="teamTree"
+          @on-check-change="handleTeamListCheckChange"
+          :render="renderTeamList"
+          empty-text="请先添加班组信息"></Tree> -->
+      </FormItem>
+      <FormItem label="值班顺序"
+        prop="order">
+        <Table :columns="newPlanColumns"
+          :data="newPlanOrder"></Table>
+      </FormItem>
+    </Form>
+    <div slot="footer">
+      <Button @click="closeAddPlan">取消</Button>
+      <Button type="primary"
+        :disabled="disableRulePlan(newPlan)"
+        @click="confirmAddPlan"
+        style="margin-left:16px;">创建</Button>
+    </div>
+  </Modal>
+  <!-- 手动创建 -->
+  <Modal v-model="recordAdd"
+    :mask-closable="false"
+    title="创建值班计划"
+    width='980'
+    class="modal-add-plan"
+    @on-cancel="closeRecordAdd">
+    <Form ref="recordPlan"
+      label-position="left"
+      :label-width="90"
+      inline
+      :model="recordPlan"
+      :rules="newPlanRules">
+      <FormItem label="值班表名称"
+        prop="name">
+        <Input v-model="recordPlan.name"
+          style='width: 260px'
+          placeholder="请输入计划名称"></Input>
+      </FormItem>
+      <FormItem label="排班模板"
+        prop="template">
+        <Select v-model="recordPlan.template"
+          style='width: 260px'
+          class="template-select">
+          <Option v-for="(item, index) in templateList"
+            :value="index"
+            :key="item.id">{{ item.name }}</Option>
+        </Select>
+      </FormItem>
+      <FormItem label="值班时间"
+        prop="startTime">
+        <RadioGroup v-model="recordPlan.animal">
+          <Radio label="1">按月排班</Radio>
+          <Radio label="2">按周排班</Radio>
+          <Radio label="3">按具体时间排班</Radio>
+        </RadioGroup>
+        <Button @click='createList'
+          :disabled="recordPlan.template === null">生成值班白表</Button>
+        <div v-if="recordPlan.animal === '3'">
+          <DatePicker type="date"
+            v-model="recordPlan.startTime"
+            placeholder="开始时间"></DatePicker>
+          <DatePicker type="date"
+            placeholder="结束时间"
+            v-model="recordPlan.endTime"></DatePicker>
+        </div>
+      </FormItem>
+      <div class="planTable">
+        <div class="label">
+          值班表：
+        </div>
+        <div class="table"
+          v-if='isDutyList'>
+          <Table :columns="columns1"
+            height='520'
+            :data="data1"></Table>
+        </div>
+      </div>
+    </Form>
+    <div slot="footer">
+      <Button @click="closeRecordAdd">取消</Button>
+      <Button type="primary"
+        :disabled="disableRecordPlan(recordPlan)"
+        @click="confirmRecordAdd"
+        style="margin-left:16px;">创建</Button>
+    </div>
+  </Modal>
+  <!-- 编辑任务 -->
+  <Modal v-model="modalUpdatePlan"
+    :mask-closable="false"
+    width='980'
+    title="修改值班计划"
+    class="modal-add-plan"
+    @on-cancel="closeUpdatePlan">
+    <!-- 此处的 newPlan 和创建计划共用属性 -->
+    <Form ref="updatePlan"
+      label-position="left"
+      :label-width="90"
+      :model="updatePlan"
+      :rules="newPlanRules">
+      <FormItem label="值班表名称"
+        prop='name'>
+        <Input v-model="updatePlan.name"
+          style='width: 260px'
+          placeholder="请输入计划名称"></Input>
+      </FormItem>
+      <div class="planTable">
+        <div class="label">
+          值班表：
+        </div>
+        <div class="table">
+          <Table :columns="columns2"
+            height='520'
+            :data="data2"></Table>
+        </div>
+      </div>
+    </Form>
+    <div slot="footer">
+      <Button @click="closeUpdatePlan">取消</Button>
+      <Button type="primary"
+        @click="confirmUpdatePlan"
+        style="margin-left:16px;">修改</Button>
+    </div>
+  </Modal>
+  <!-- 计划详情 -->
+  <Modal v-model="modalVisibleDetailPlan"
+    title="值班计划详情"
+    :mask-closable="false"
+    class="modal-detail-plan"
+    @on-cancel="closeDetailPlan"
+    width='980'>
+    <div class="planInfo"
+      v-if="modalVisibleDetailPlan">
+      <div class="name">
+        计划名称：{{detailPlan.name}}
+      </div>
+      <div class="time">
+        值班时间：{{ detailPlan.time }}
+      </div>
+      <div class="template">
+        值班模板：{{ detailPlan.template }}
+      </div>
+    </div>
+    <div class="planTable">
+      <div class="label">
+        值班表：
+      </div>
+      <div class="table">
+        <Table :columns="columns3"
+          height='520'
+          :data="data3"></Table>
+      </div>
+    </div>
+    <div slot="footer">
+      <Button @click="closeDetailPlan">确定</Button>
+    </div>
+  </Modal>
+</div>

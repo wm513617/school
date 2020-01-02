@@ -1,0 +1,62 @@
+.login-wrapper .ivu-input:focus {
+  background: #fff;
+  height: 18px;
+  font-size: 14px;
+  /*width: 400px;*/
+  color: #333;
+  border-radius: 0px;
+  border: none;
+  box-shadow: 0 0 0 2px rgba(70, 153, 249, 0)
+}
+.login-input .ivu-input-wrapper{
+  height: 18px;
+  margin-top: 10px;
+}
+.login-wrapper .ivu-input {
+  padding: 0 0;
+  height: 18px;
+  font-size: 14px;
+  color: #999;
+  /*width: 400px;*/
+  background: linear-gradient(0deg, #fff, #fff);
+  color: #000
+}
+
+.login-wrapper .login-button {
+  font-size: 25px;
+}
+
+.login-wrapper .ivu-form-item-content {
+  height: 20px;
+  line-height: 20px;
+}
+.form-opacity .ivu-form-item {
+  margin-bottom: 0px;
+  /*width: 400px;*/
+  height: 20px;
+}
+.login-form .ivu-input {
+  border: none;
+  border-radius: 0px;
+  height: 18px;
+  font-size: 14px;
+  color: #999;
+  /*margin-top: 10px;*/
+}
+.form-opacity .ivu-input-group-prepend, .ivu-input-group-append{
+  border-radius: 0px;
+}
+.form-opacity .ivu-input-wrapper{
+  height: 20px;
+}
+.login-form .ivu-btn{
+  border-radius: 0px; 
+  background: #0284d7 !important;
+}
+.login-form .ivu-btn:hover {
+    background: #52afeb !important;
+    color: #fff;
+}
+.login-form .ivu-btn-primary:hover {
+    background-color: #52afeb !important;
+}

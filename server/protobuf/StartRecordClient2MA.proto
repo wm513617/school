@@ -1,0 +1,20 @@
+package Client2MA;
+
+message StartRecordReq
+{	
+	required string devIp=1;
+	required int32  devPort=2;	
+	required int32  channel=3;//流通道
+	required int32  streamType=4;//主码流 ：1，子码流 ：2,第三码流 3 图片流：4。   //对应typeInfo.h文件中的流类型定义
+	required int32  mType=5;//1:蓝星，2：海康，3：大华 
+	required int32  eventType=6;//录像的事件,当事件为手动录像事件时。eventSrc 为User表的ID
+	required int32  eventSrc = 7;//事件源信息。当eventType事件类型为手动录像事件时。eventSrc 为User表的ID。其它事件为EventConf表id
+	optional bytes  devName=8;     //设备名称
+	optional int32  devId=9;       //设备ID，如vmr自动生成的通道号
+	optional int32  streamConnMode=10;
+	optional int32  streamConnPort=11;
+  optional string  tsServerId=12;//用于标注手动负载均衡的ts.如果有这个,则使用这个指定的ts,没有则自动负载
+	required string  dsServerId=13;//用于指定这个事件发往那个ds.
+}
+
+

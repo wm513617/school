@@ -1,0 +1,58 @@
+import { HeightRule } from "file/table/table-row/table-row-height";
+import { XmlComponent } from "file/xml-components";
+import { TableCell } from "../table-cell";
+import { TableRowProperties } from "./table-row-properties";
+
+export class TableRow extends XmlComponent {
+    private readonly properties: TableRowProperties;
+
+    constructor(private readonly cells: TableCell[]) {
+        super("w:tr");
+        this.properties = new TableRowProperties();
+        this.root.push(this.properties);
+        cells.forEach((c) => this.root.push(c));
+    }
+
+    public getCell(index: number): TableCell {
+        const cell = this.cells[index];
+
+        if (!cell) {
+            throw Error("Index out of bounds when trying to get cell on row");
+        }
+
+        return cell;
+    }
+
+    public addGridSpan(index: number, cellSpan: number): TableCell {
+        const remainCell = this.cells[index];
+        remainCell.addGridSpan(cellSpan);
+        this.cells.splice(index + 1, cellSpan - 1);
+        this.root.splice(index + 2, cellSpan - 1);
+
+        return remainCell;
+    }
+
+    public mergeCells(startIndex: number, endIndex: number): TableCell {
+        const cellSpan = endIndex - startIndex + 1;
+
+        return this.addGridSpan(startIndex, cellSpan);
+    }
+
+    public setCantSplit(): TableRow {
+        this.properties.setCantSplit();
+
+        return this;
+    }
+
+    public setTableHeader(): TableRow {
+        this.properties.setTableHeader();
+
+        return this;
+    }
+
+    public setHeight(height: number, rule: HeightRule): TableRow {
+        this.properties.setHeight(height, rule);
+
+        return this;
+    }
+}

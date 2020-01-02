@@ -1,0 +1,183 @@
+<div class="vehicle flex flex-1"
+  style="flex-direction:column">
+  <div class="layout-content bs-content">
+    <div class="bs-left">
+      <div style="padding:10px;">
+        <Input v-model="searchVal"
+          icon="ios-search-strong"
+          placeholder="请输入..."></Input>
+      </div>
+      <div class="dev-tree">
+        <bs-scroll ref="scroller">
+          <VTree ref='tree'
+            @node-dblclick="openPreviewClick"
+            @on-expand="expand"
+            @openPreviewClick='openPreviewClick'
+            @openAllPreviewClick="openAllPreviewClick"
+            :activeId="activeOrgId"
+            :searchVal="searchVal"
+            @node-click='handleNode'
+            :treeData="videoOrg"
+            :options="options"></VTree>
+        </bs-scroll>
+      </div>
+      <div class="channelHandle"
+        style="">
+        <Tabs value="云台控制"
+          @on-click="changeHandleType">
+          <Tab-pane label="云台控制"
+            name="云台控制">
+          </Tab-pane>
+          <Tab-pane label="位置"
+            name="地图">
+          </Tab-pane>
+        </Tabs>
+        <div style="flex:1;height:250px;position:relative"
+          v-if="handleType==='云台控制'">
+          <div class="ctrlScale">
+            <BasicsCtrl></BasicsCtrl>
+          </div>
+        </div>
+        <div style="height:250px; width:100%; padding: 0 10px;"
+          v-if="handleType==='地图'">
+          <BSMap :isConfig="false"
+            :activeMapCenter="mapCenter">
+            <bs-layer :id="vedioLayer.id"
+              :name="vedioLayer.name"
+              :features="videoIpcFeatures"
+              :zIndex="5"></bs-layer>
+          </BSMap>
+        </div>
+      </div>
+
+    </div>
+    <div class="bs-main">
+      <div class="video">
+        <div style="flex:1 0;position:relative">
+          <videoImgBg class="videosbg"
+            v-if="showBackView"
+            :count="count"
+            :active="bgactive"
+            :imgList="imgList"
+            :style="{height: `calc(100% - ${slotHeight}px)`}"></videoImgBg>
+          <div class="videos"
+            :style="{bottom: videoBottom + 'px',top: videoTop + 'px'}">
+            <video-frame :pluginCount="16"
+              :playingCount.sync="playingCount"
+              :clickInit="false"
+              :defaultShowscreen="4"
+              :slotHeight="slotHeight"
+              :state.sync="state"
+              ref="frame"
+              :bgColor="'rgb(64, 64, 64)'"></video-frame>
+          </div>
+          <VideoButtons ref="videoBtn"
+            :playingCount="playingCount"
+            :style="{'height': btnheight + 'px'}"></VideoButtons>
+        </div>
+        <div class="vehicle-result">
+          <div class="carInfo">
+            <div class="carimg">
+              <img v-if="car.image"
+                :src="'/api/upload?id='+car.image"
+                alt="车辆图片">
+              <div v-else>暂无数据</div>
+              <span v-if="car.vehicleList&&car.vehicleList != 0"
+                class="car-type">{{car.vehicleListName}}</span>
+            </div>
+            <div v-if="car.image"
+              class="content">
+              <div class="section split">
+                <div class="count">
+                  <span class="dif fs-28">{{car.licence}}</span>
+                </div>
+                <div class="title">车牌号</div>
+              </div>
+              <div class="section">
+                <div class="count">
+                  <span>{{car.timeStamp?$moment.unix(Number(car.timeStamp)).format('YYYY-MM-DD HH:mm:ss'):''}}</span>
+                </div>
+                <div class="title">抓拍时间</div>
+              </div>
+              <div class="section split">
+                <div class="count">
+                  <span>{{car.brand}}</span>
+                </div>
+                <div class="title">车辆品牌</div>
+              </div>
+              <div class="section split">
+                <div class="count">
+                  <span>{{car.vehicleTypeName}}</span>
+                </div>
+                <div class="title">车辆类型</div>
+              </div>
+              <div class="section">
+                <div class="count">
+                  <span>{{car.colorName}}</span>
+                </div>
+                <div class="title">车辆颜色</div>
+              </div>
+            </div>
+          </div>
+          <div class="result-handle">
+            <Button type="ghost"
+              @click="changeDeployCar">忽略</Button>
+            <Button type="primary"
+              @click="show(car)">查看</Button>
+          </div>
+        </div>
+      </div>
+      <div class="video-list">
+        <Tabs :animated="false"
+          size="small">
+          <TabPane label="实时过车">
+            <div class="passList">
+              <div class="pic-list">
+                <transition-group name="contrastList"
+                  tag="ul"
+                  class="carList">
+                  <li v-for="item in vehicleRealTime"
+                    :key="item['_id']"
+                    @click="showCar(item)">
+                    <img v-if="item"
+                      :src="'/api/upload?id='+item.image">
+                  </li>
+                </transition-group>
+              </div>
+              <div class="more-btn"
+                @click="getMoreCars">
+                <p>查看更多</p>
+              </div>
+            </div>
+          </TabPane>
+          <TabPane label="布控车辆">
+            <div class="passList">
+              <div class="pass-list-table">
+                <bs-scroll ref="scroller"
+                  height="140px">
+                  <Table size="small"
+                    :tooltip="true"
+                    :columns="carListTitle "
+                    :data="carList"
+                    height="140"></Table>
+                </bs-scroll>
+              </div>
+              <div class="more-btn"
+                @click="getMoreCars">
+                <p>查看更多</p>
+              </div>
+            </div>
+          </TabPane>
+          <TabPane label="暂停接收">
+            <div class="pause">
+              <Button @click="pauseConnect">暂停接收</Button>
+            </div>
+          </TabPane>
+        </Tabs>
+      </div>
+    </div>
+  </div>
+  <CarDetail :value="carDetailInfo"
+    @detailModalClose="pbClose"
+    :show="showBackView"></CarDetail>
+</div>

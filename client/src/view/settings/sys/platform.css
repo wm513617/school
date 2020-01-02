@@ -1,0 +1,11 @@
+.platform .uploadcolor .ivu-select-dropdown {
+  max-height: 385px !important;
+  padding: 0px !important;
+}
+.platform .fontcolor .ivu-select-dropdown {
+  max-height: 322px !important;
+  padding: 0px !important;
+}
+.uploadcolor .ivu-select-single .ivu-select-selection .ivu-select-placeholder{
+  color: #5d5d5d !important;
+}

@@ -1,0 +1,25 @@
+
+// 与DA交互的所有的Message的通用形式
+
+// CommandGeneric = CommandBase + [各个业务Message]
+
+message CommandBase
+{
+	required string devIp    = 1;
+	required int32  devPort  = 2;
+	// 由于20170714 修改了vendor的含义,某款设备不再仅由一个厂家信息去表示
+	// 此字段为了当前尽量少的变动, 暂时未添加type字段,以后可能需要添加 FIX ME
+	optional int32  vendor   = 3; 
+	optional string version  = 4;
+	optional string username = 5;
+	optional string password = 6;
+
+	// bit0 : get param with realtime mode flag, 1->enable, 0->disable
+	optional int32  flag     = 7;
+}
+
+message CommandGeneric
+{
+	required CommandBase cmdBase = 1;
+	optional bytes cmdContent    = 2;
+}

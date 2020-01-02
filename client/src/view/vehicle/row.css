@@ -1,0 +1,18 @@
+#deploy .ivu-table .ivu-table-body {
+  height: 401px !important;
+}
+
+#deploy .table-content {
+  position: relative;
+  height: 433px;
+}
+
+#deploy .table-content .table-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#deploy .ivu-table-body>table {
+  width: 100% !important;
+}

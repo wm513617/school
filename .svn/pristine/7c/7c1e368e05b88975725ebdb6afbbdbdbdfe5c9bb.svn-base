@@ -1,0 +1,6 @@
+th .ivu-table-cell {
+  padding-left: 24px;
+}
+.ivu-table-cell {
+  padding-left: 24px;
+}

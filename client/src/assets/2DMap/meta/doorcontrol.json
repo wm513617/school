@@ -1,0 +1,279 @@
+[{
+  "_id": "5b75146c5697ed6a9ee46b36",
+  "name": "西安分公司",
+  "isOrg": true,
+  "children": [
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 1,
+      "type": 4,
+      "status": "open",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5c6a0f1cf45de903e3565765",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "bstar",
+        "_id": "5c6a0f1cf45de903e3565764",
+        "name": "test123",
+        "ip": "0.234.0.0",
+        "cport": 3721,
+        "dport": 3720
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df",
+      "name": "test123_门禁"
+    },
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 0,
+      "type": 4,
+      "status": "close",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5cb946806fda032fec30bf17",
+      "name": "12e_门禁_1_0",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "lida",
+        "_id": "5cb6f0472035ae0d2c077f3e",
+        "name": "12e",
+        "ip": "0.10.0.0",
+        "cport": 1
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    },
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 1,
+      "type": 4,
+      "status": "abnormal",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5cc121c16651f959c00e0e14",
+      "eid": {
+        "type": "alarmHost",
+        "manufacturer": "shike",
+        "_id": "5cc121c06651f959c00e0e13",
+        "name": "asd",
+        "ip": "87.0.0.0",
+        "cport": 3721
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df",
+      "name": "asd_门禁1"
+    },
+    {
+      "chan": 0,
+      "type": 4,
+      "status": "open",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5cb9343a3ab74b45384c68c1",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "lida",
+        "_id": "5cb6e73514c8820574cf1336",
+        "name": "ce",
+        "ip": "1.1.1.0",
+        "cport": 3721
+      },
+      "name": "123门禁",
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    },
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 0,
+      "type": 4,
+      "status": "close",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5cb946596fda032fec30bf00",
+      "name": "cece_门禁_1_0",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "lida",
+        "_id": "5cb6e73514c8820574cf1337",
+        "name": "cece",
+        "ip": "11.0.0.1",
+        "cport": 3721
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    },
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 1,
+      "type": 4,
+      "status": "abnormal",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5c5408c15f5038157c300359",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "shike",
+        "_id": "5c5408c15f5038157c300356",
+        "name": "问",
+        "ip": "23.0.0.0",
+        "cport": 37212
+      },
+      "name": "问_门禁_1",
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    },
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 1,
+      "type": 4,
+      "status": "open",
+      "maxdelaytime": 300,
+      "minintervaltime": 10,
+      "_id": "5c60e3bc9146df2420066dd9",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "bstar",
+        "_id": "5c60e3bc9146df2420066dd8",
+        "name": "123e",
+        "ip": "112.0.0.0",
+        "cport": 2,
+        "dport": 2
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df",
+      "name": "123e_门禁"
+    },
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 1,
+      "type": 4,
+      "status": "close",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5c6694a2225717821f702a59",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "bstar",
+        "_id": "5c6694a2225717821f702a58",
+        "name": "testlh",
+        "ip": "0.45.0.0",
+        "cport": 3721,
+        "dport": 3720
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df",
+      "name": "testlh_门禁"
+    },
+    {
+      "mapsign": {
+        "signflag": true,
+        "signtype": 0
+      },
+      "chan": 0,
+      "type": 4,
+      "status": "abnormal",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5cb936353ab74b45384c6a66",
+      "name": "12e_门禁_123_0",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "lida",
+        "_id": "5cb6f0472035ae0d2c077f3e",
+        "name": "12e",
+        "ip": "0.10.0.0",
+        "cport": 1
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    },
+    {
+      "chan": 1,
+      "type": 4,
+      "status": "open",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5c74e32eb321101c0478ad8a",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "onvif",
+        "_id": "5c74e32db321101c0478ad6c",
+        "name": "华侨3层北大厅西走廊男卫",
+        "ip": "10.100.80.157",
+        "cport": 80,
+        "dport": 554
+      },
+      "name": "华侨3层北大厅西走廊男卫_门禁",
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    },
+    {
+      "chan": 1,
+      "type": 4,
+      "status": "close",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5c74e32eb321101c0478ad8b",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "onvif",
+        "_id": "5c74e32db321101c0478ad6d",
+        "name": "华侨3层D段中向东",
+        "ip": "10.100.80.158",
+        "cport": 80,
+        "dport": 554
+      },
+      "name": "华侨3层D段中向东_门禁",
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    },
+    {
+      "chan": 1,
+      "type": 4,
+      "status": "open",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5cb7eaff471b5e4c94f06972",
+      "eid": {
+        "type": "alarmHost",
+        "manufacturer": "shike",
+        "_id": "5cb7eaff471b5e4c94f06971",
+        "name": "请问",
+        "ip": "123.0.0.0",
+        "cport": 3721
+      },
+      "alarmtemplate": "5b75146b5697ed6a9ee469df",
+      "name": "请问_门禁"
+    },
+    {
+      "chan": 1,
+      "type": 4,
+      "status": "close",
+      "maxdelaytime": 300,
+      "minintervaltime": 0,
+      "_id": "5c74e32eb321101c0478ad9c",
+      "eid": {
+        "type": "ipc",
+        "manufacturer": "onvif",
+        "_id": "5c74e32db321101c0478ad7e",
+        "name": "华侨3层阅览室3",
+        "ip": "10.100.80.148",
+        "cport": 80,
+        "dport": 554
+      },
+      "name": "华侨3层阅览室3_门禁",
+      "alarmtemplate": "5b75146b5697ed6a9ee469df"
+    }
+  ]
+}]

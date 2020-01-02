@@ -1,0 +1,63 @@
+syntax = "proto2"; // 如果不声明 syntax 版本时, proto3版本会默认按照 2.x 的语法解析
+
+package MA2DA;
+import "CommandBase.proto";
+// [GetRequest && SetResponse]形式的message不带"Prm", [GetResponse && SetRequest]形式的message需要带"Prm"
+// 变量格式为 "*Enum" 表示枚举
+// 变量格式为 "*Arr"  表示为数组
+
+// 设备目录树信息  [读取/设置]
+
+// Get Request && Set Response
+message SysCatalogCfg
+{
+	optional string id  = 1; // 前端平台/设备的gb28181 Id 登录/匹配服务时使用
+}
+
+// Get Response && Set Request
+message SysCatalogCfgPrm
+{
+	enum TreeType{
+		Gb28181   = 1; // 国标28181 Catalog
+	};
+
+	enum NodeType{
+		Ipc          = 1;
+		Nvr          = 2;
+		AlarmInput   = 3;
+		AlarmOutput  = 4;
+		Service      = 5;
+
+		Unknown      = 99;
+	};
+
+	required TreeType treeTypeEnum             = 1;
+
+	message TreeNodeCfgPrm
+	{
+		// 如果parentId或者nodeId == parentId 时, 说明是根节点
+
+		optional string nodeId         = 1; // 当前节点Id
+		optional string parentId       = 2; // 父节点ID
+		optional string businessId     = 3; // 业务ID
+
+		optional bytes  name           = 4; // 节点名称, UTF-8编码
+		optional NodeType nodeTypeEnum = 5; // 节点类型, 如果类型为"Service",具体类型可以从nodeId中解析出来
+
+		optional string devIp          = 6; // 节点Ip
+		optional int32  devPort        = 7; // 节点通信端口
+		optional int32  dataPort       = 8; // 节点数据端口
+		optional int32  devStatus      = 9; // 节点状态 0->OFF, 1->ON
+
+		optional string manufacturer   = 10; // 厂商
+		optional string model          = 11; // 型号
+		optional bytes  address        = 12; // 安装地址, UTF-8编码
+
+		// Extended Information
+		optional bytes  reserve        = 15;
+	}
+	repeated TreeNodeCfgPrm TreeNodeCfgPrmArr   = 2;
+
+	optional int32 chanTotalCnt                 = 3; // 设备(比如NVR)支持的所有通道个数
+}
+

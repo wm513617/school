@@ -1,0 +1,459 @@
+[
+  {
+    "_id": "5c80e85bf7d185651e59be0f",
+    "default": true,
+    "isDelete": false,
+    "isRotate": true,
+    "name": "枪机",
+    "files": [
+      {
+        "_id": "5c80e85bf7d185651e59be12",
+        "name": "video_gun_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e85bf7d185651e59be11",
+        "name": "video_gun_off.png",
+        "path": "",
+        "status": "offline"
+      },
+      {
+        "_id": "5c80e85bf7d185651e59be10",
+        "name": "video_gun_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e85bf7d185651e59be13",
+        "name": "video_gun_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "00",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e875f7d185651e59be24",
+    "default": true,
+    "isDelete": false,
+    "isRotate": false,
+    "name": "半球",
+    "files": [
+      {
+        "_id": "5c80e875f7d185651e59be27",
+        "name": "video_halfball_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e875f7d185651e59be26",
+        "name": "video_halfball_off.png",
+        "path": "",
+        "status": "offline"
+      },
+      {
+        "_id": "5c80e875f7d185651e59be25",
+        "name": "video_halfball_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e875f7d185651e59be28",
+        "name": "video_halfball_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "02",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e886f7d185651e59be36",
+    "default": true,
+    "isDelete": false,
+    "isRotate": false,
+    "name": "快球",
+    "files": [
+      {
+        "_id": "5c80e886f7d185651e59be39",
+        "name": "vedio_ball_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e886f7d185651e59be38",
+        "name": "vedio_ball_off.png",
+        "path": "",
+        "status": "offline"
+      },
+      {
+        "_id": "5c80e886f7d185651e59be37",
+        "name": "vedio_ball_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e886f7d185651e59be40",
+        "name": "video_ball_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "03",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e89cf7d185651e59be4a",
+    "default": true,
+    "isDelete": false,
+    "name": "红外枪机",
+    "isRotate": true,
+    "files": [
+      {
+        "_id": "5c80e89cf7d185651e59be4d",
+        "name": "video_gunred_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e89cf7d185651e59be4c",
+        "name": "video_gunred_off.png",
+        "path": "",
+        "status": "offline"
+      },
+      {
+        "_id": "5c80e89cf7d185651e59be4b",
+        "name": "video_gunred_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e89cf7d185651e59be4e",
+        "name": "video_gunred_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "01",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e8adf7d185651e59be5b",
+    "default": true,
+    "isDelete": false,
+    "name": "全景",
+    "isRotate": false,
+    "files": [
+      {
+        "_id": "5c80e8adf7d185651e59be5e",
+        "name": "video_allview_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e8adf7d185651e59be5d",
+        "name": "video_allview_off.png",
+        "path": "",
+        "status": "offline"
+      },
+      {
+        "_id": "5c80e8adf7d185651e59be5c",
+        "name": "video_allview_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e8adf7d185651e59be5f",
+        "name": "video_allview_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "04",
+    "__v": 0
+  },
+  {
+    "_id": "5cc14ee6fd300d43fc886061",
+    "default": true,
+    "isDelete": false,
+    "name": "人脸抓拍",
+    "isRotate": true,
+    "files": [
+      {
+        "_id": "5cc14ef9fd300d43fc886062",
+        "name": "face_recognition_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5cc14ef9fd300d43fc886063",
+        "name": "face_recognition_off.png",
+        "path": "",
+        "status": "offline"
+      },
+      {
+        "_id": "5cc14ef9fd300d43fc886064",
+        "name": "face_recognition_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5cc14ef9fd300d43fc886065",
+        "name": "face_recognition_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "05",
+    "__v": 0
+  },
+  {
+    "_id": "5cc14f3ffd300d43fc886064",
+    "default": true,
+    "isDelete": false,
+    "name": "交通抓拍",
+    "isRotate": true,
+    "files": [
+      {
+        "_id": "5cc14f3ffd300d43fc886065",
+        "name": "vehicle_recognition_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5cc14f3ffd300d43fc886066",
+        "name": "vehicle_recognition_off.png",
+        "path": "",
+        "status": "offline"
+      },
+      {
+        "_id": "5cc14f3ffd300d43fc886067",
+        "name": "vehicle_recognition_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5cc14f3ffd300d43fc886068",
+        "name": "vehicle_recognition_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "06",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e8c5f7d185651e59be6f",
+    "default": true,
+    "isDelete": false,
+    "name": "普通报警",
+    "files": [
+      {
+        "_id": "5c80e8c5f7d185651e59be72",
+        "name": "alarm_common_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e8c5f7d185651e59be70",
+        "name": "alarm_common_ing.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e8c5f7d185651e59be73",
+        "name": "alarm_common_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "10",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e8d6f7d185651e59be81",
+    "default": true,
+    "isDelete": false,
+    "name": "报警主机",
+    "files": [
+      {
+        "_id": "5c80e8d6f7d185651e59be84",
+        "name": "alarm_host_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e8d6f7d185651e59be82",
+        "name": "alarm_host_ing.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e8d6f7d185651e59be85",
+        "name": "alarm_host_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "90",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e8e7f7d185651e59be91",
+    "default": true,
+    "isDelete": false,
+    "name": "消防报警",
+    "files": [
+      {
+        "_id": "5c80e8e7f7d185651e59be94",
+        "name": "fireAlarm_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e8e7f7d185651e59be92",
+        "name": "fireAlarm_alarm.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e8e7f7d185651e59be95",
+        "name": "fireAlarm_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "110",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e901f7d185651e59bea6",
+    "default": true,
+    "isDelete": false,
+    "name": "报警柱",
+    "files": [
+      {
+        "_id": "5c80e8e7f7d185651e59be99",
+        "name": "alarm_column_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e8e7f7d185651e59be97",
+        "name": "alarm_column_alarming.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e8e7f7d185651e59be96",
+        "name": "alarm_column_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "129",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e915f7d185651e59beb9",
+    "default": true,
+    "isDelete": false,
+    "name": "报警箱",
+    "files": [
+      {
+        "_id": "5c80e915f7d185651e59bebc",
+        "name": "alarm_box_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e915f7d185651e59beba",
+        "name": "alarm_box_alarming.png",
+        "path": "",
+        "status": "alarm"
+      },
+      {
+        "_id": "5c80e915f7d185651e59bebd",
+        "name": "alarm_box_unuse.png",
+        "path": "",
+        "status": "stopped"
+      }
+    ],
+    "oid": "130",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e935f7d185651e59bed2",
+    "default": true,
+    "isDelete": false,
+    "name": "巡更",
+    "files": [
+      {
+        "_id": "5c80e935f7d185651e59bed5",
+        "name": "patrol_online.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e935f7d185651e59bed6",
+        "name": "patrol_alarm.png",
+        "path": "",
+        "status": "alarm"
+      }
+    ],
+    "oid": "140",
+    "__v": 0
+  },
+  {
+    "_id": "5c80e942f7d185651e59bedf",
+    "default": true,
+    "isDelete": false,
+    "name": "移动单兵",
+    "files": [
+      {
+        "_id": "5c80e942f7d185651e59bee2",
+        "name": "movesingle.png",
+        "path": "",
+        "status": "online"
+      },
+      {
+        "_id": "5c80e942f7d185651e59bee0",
+        "name": "singlealarm.png",
+        "path": "",
+        "status": "alarm"
+      }
+    ],
+    "oid": "151",
+    "__v": 0
+  },
+  {
+    "_id": "5cc01ae3ff969d188c1584bf",
+    "default": true,
+    "isDelete": false,
+    "name": "门禁",
+    "files": [
+      {
+        "_id": "5cc01ae3ff969d188c1584c0",
+        "name": "doorcontrol_open.png",
+        "path": "",
+        "status": "open"
+      },
+      {
+        "_id": "5cc01ae3ff969d188c1584c1",
+        "name": "doorcontrol_close.png",
+        "path": "",
+        "status": "close"
+      },
+      {
+        "_id": "5cc01ae3ff969d188c1584c2",
+        "name": "doorcontrol_abnormity.png",
+        "path": "",
+        "status": "abnormal"
+      }
+    ],
+    "oid": "41",
+    "__v": 0
+  }
+]

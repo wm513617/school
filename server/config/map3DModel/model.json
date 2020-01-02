@@ -1,0 +1,268 @@
+[
+  {
+    "_id": "5c3bef95ec09be21e412d1be",
+    "default": true,
+    "isDelete": false,
+    "name": "枪机",
+    "oid": "00",
+    "files": [
+      {
+        "_id": "5c3bef95ec09be21e412d1c1",
+        "status": "online",
+        "name": "qiangji.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "qiangji.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c3bf212ec09be21e412d302",
+    "default": true,
+    "isDelete": false,
+    "name": "半球机",
+    "oid": "02",
+    "files": [
+      {
+        "_id": "5c3bf212ec09be21e412d305",
+        "status": "online",
+        "name": "qiuji.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "qiuji.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c99d907f2b933553a7ab600",
+    "default": true,
+    "isDelete": false,
+    "name": "快球",
+    "oid": "03",
+    "files": [
+      {
+        "_id": "5c99d907f2b933553a7ab603",
+        "status": "online",
+        "name": "qiuji.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "qiuji.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c99d928f2b933553a7ab616",
+    "default": true,
+    "isDelete": false,
+    "name": "红外枪机",
+    "oid": "01",
+    "files": [
+      {
+        "_id": "5c99d928f2b933553a7ab619",
+        "status": "online",
+        "name": "hongwaiqiangji.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "hongwaiqiangji.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c99d944f2b933553a7ab629",
+    "default": true,
+    "isDelete": false,
+    "name": "全景",
+    "oid": "04",
+    "files": [
+      {
+        "_id": "5c99d944f2b933553a7ab62c",
+        "status": "online",
+        "name": "qiuji.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "qiuji.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5be9334e8cb19c4464905f36",
+    "default": true,
+    "isDelete": false,
+    "name": "普通报警",
+    "oid": "10",
+    "files": [
+      {
+        "_id": "5c93283b692b9b53d14bf94a",
+        "status": "online",
+        "name": "baojingxiang.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "baojingqiuzhu.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5be7d97bd741d94a01fcfe9d",
+    "default": true,
+    "isDelete": false,
+    "name": "报警主机",
+    "oid": "90",
+    "files": [
+      {
+        "_id": "5be933148cb19c4464905ef1",
+        "status": "online",
+        "name": "baojingxiang.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "baojingqiuzhu.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5be7d835d741d94a01fcfced",
+    "default": true,
+    "isDelete": false,
+    "name": "消防报警",
+    "oid": "110",
+    "files": [
+      {
+        "_id": "5c932334692b9b53d14bf5a8",
+        "status": "online",
+        "name": "baojingxiang.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "baojingqiuzhu.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c3be5d4ec09be21e412ccc8",
+    "default": true,
+    "isDelete": false,
+    "name": "报警柱",
+    "oid": "129",
+    "files": [
+      {
+        "_id": "5c3be5d4ec09be21e412ccca",
+        "status": "online",
+        "name": "baojingzhu.gltf",
+        "path": ""
+      },
+      {
+        "_id": "5c3be5d4ec09be21e412ccc9",
+        "status": "alarm",
+        "name": "baojingzhu_jing.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "baojingqiuzhu.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5bdd757b04653ad41ccc74d4",
+    "default": true,
+    "isDelete": false,
+    "name": "报警箱",
+    "oid": "130",
+    "files": [
+      {
+        "_id": "5bf6714f2d30493d6d969d84",
+        "status": "online",
+        "name": "baojingxiang.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "baojingqiuzhu.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c3bee76ec09be21e412d124",
+    "default": true,
+    "isDelete": false,
+    "name": "巡更点",
+    "oid": "140",
+    "files": [
+      {
+        "_id": "5c3bee76ec09be21e412d126",
+        "status": "online",
+        "name": "xungengdian.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "xungengdian.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c3bee95ec09be21e412d138",
+    "default": true,
+    "isDelete": false,
+    "name": "单兵",
+    "oid": "151",
+    "files": [
+      {
+        "_id": "5c3bee95ec09be21e412d13a",
+        "status": "online",
+        "name": "danbing.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "danbing.png",
+      "path": ""
+    },
+    "__v": 0
+  },
+  {
+    "_id": "5c3beeacec09be21e412d147",
+    "default": true,
+    "isDelete": false,
+    "name": "立杆",
+    "oid": "161",
+    "files": [
+      {
+        "_id": "5c3beeacec09be21e412d148",
+        "status": "online",
+        "name": "ligan.gltf",
+        "path": ""
+      }
+    ],
+    "picture": {
+      "name": "ligan.png",
+      "path": ""
+    },
+    "__v": 0
+  }
+]
