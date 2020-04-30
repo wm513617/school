@@ -65,7 +65,7 @@
     "influx": "^5.4.0",
     "ioredis": "^4.2.0",
     "jimp": "^0.6.4",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "js-base64": "^2.1.9",
     "jsonwebtoken": "^7.3.0",
     "jsts": "^1.6.0",
