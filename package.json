@@ -84,7 +84,7 @@
     "koa-static-cache": "^5.1.2",
     "koa-views": "^5.2.1",
     "lodash": "^4.17.4",
-    "log4js": "^1.1.1",
+    "log4js": "^6.4.0",
     "method-override": "^2.3.7",
     "mkdirp": "^0.5.1",
     "moment": "^2.18.1",
