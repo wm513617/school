@@ -107,7 +107,7 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
     "resize-img": "^1.1.2",
-    "socket.io": "^1.7.3",
+    "socket.io": "^4.5.3",
     "socket.io-client": "^1.7.1",
     "socketio-jwt": "^4.5.0",
     "swagger-koa": "^1.0.10",
